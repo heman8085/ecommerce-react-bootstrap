@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Table } from "react-bootstrap";
-import CartData from "./CartData";
+//import CartData from "./CartData";
+import { EcomContext} from "../store/EcomContext";
 
 const Cart = () => {
+
+  const { cart,quantityChangeHandler } = useContext(EcomContext);
   return (
     <Table striped bordered hover>
       <thead>
@@ -14,15 +17,23 @@ const Cart = () => {
         </tr>
       </thead>
       <tbody>
-        {CartData.map((item, index) => (
-          <tr key={index}>
+        {cart?.map((item, index) => (
+          <tr key={item.id}>
             <td>{index + 1}</td>
             <td>
               <img src={item.imageUrl} alt="img" style={{ width: "100px" }} />
               {item.title}
             </td>
             <td>{item.price}</td>
-            <td>{item.quantity}</td>
+            <td>
+              <button onClick={() => quantityChangeHandler(item, -1)}>
+               -
+              </button>
+              <button>{item.quantity}</button>
+              <button onClick={() => quantityChangeHandler(item, +1)}>
+                +
+              </button>
+            </td>
           </tr>
         ))}
       </tbody>

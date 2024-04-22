@@ -3,7 +3,7 @@ import { Nav, Container, Navbar } from "react-bootstrap";
 
 const Footer = () => {
     return (
-        <Navbar bg="dark" data-bs-theme="dark">
+        <Navbar bg="dark" data-bs-theme="dark" sticky="bottom">
           <Container>
             <Navbar.Brand href="#home">The Generics</Navbar.Brand>
             <Nav className="justify-content-end">

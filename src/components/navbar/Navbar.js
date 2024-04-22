@@ -5,7 +5,7 @@ import { EcomContext } from "../store/EcomContext";
 
 const Heading = () => {
 
-  const { handleShow} = useContext(EcomContext);
+  const { handleShow,size} = useContext(EcomContext);
 
   return (
     <>
@@ -18,7 +18,7 @@ const Heading = () => {
             <Nav.Link href="#about">About</Nav.Link>
           </Nav>
           <Button variant="warning" onClick={handleShow}>
-            Cart <Badge bg="danger">9</Badge>
+            Cart <Badge bg="danger">{size}</Badge>
             <span className="visually-hidden">unread messages</span>
           </Button>
         </Container>
