@@ -5,12 +5,8 @@ const AboutUs = () => {
   return (
     <Container className="mt-4">
       <Row>
-        <Col>
-          <h1 className="text-center">About Us</h1>
-          <p className="text-center">
-            Welcome to The Generics! We are a leading online store providing
-            high-quality products.
-          </p>
+        <Col className="text-center">
+          <h1>About Us</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
             vitae lectus non eros consequat fermentum. Duis eget tortor vel

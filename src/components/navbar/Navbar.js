@@ -13,8 +13,8 @@ const Heading = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/home">Home</Nav.Link>
-            <Nav.Link as={Link} to="/">Store</Nav.Link> 
+            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} to="/store">Store</Nav.Link> 
             <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
           <Button variant="warning" onClick={handleShow}>
