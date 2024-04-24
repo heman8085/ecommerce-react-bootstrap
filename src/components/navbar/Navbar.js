@@ -1,30 +1,30 @@
-import { useContext } from "react";
-import {Container,Nav,Navbar,Badge,Button} from "react-bootstrap";
+import React, { useContext } from "react";
+import { Navbar, Container, Button, Badge,Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { EcomContext } from "../store/EcomContext";
 
-
 const Heading = () => {
-
-  const { handleShow,size} = useContext(EcomContext);
+  const { handleShow, size } = useContext(EcomContext);
 
   return (
-    <>
-      <Navbar bg="dark" data-bs-theme="dark" sticky="top">
-        <Container>
-          <Navbar.Brand href="#home">The Generics</Navbar.Brand>
+    <Navbar bg="dark" variant="dark" sticky="top">
+      <Container>
+        <Navbar.Brand as={Link} to="/">The Generics</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#store">Store</Nav.Link>
-            <Nav.Link href="#about">About</Nav.Link>
+            <Nav.Link as={Link} to="/home">Home</Nav.Link>
+            <Nav.Link as={Link} to="/">Store</Nav.Link> 
+            <Nav.Link as={Link} to="/about">About</Nav.Link>
           </Nav>
           <Button variant="warning" onClick={handleShow}>
             Cart <Badge bg="danger">{size}</Badge>
             <span className="visually-hidden">unread messages</span>
           </Button>
-        </Container>
-      </Navbar>
-    </>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
-}
+};
 
 export default Heading;

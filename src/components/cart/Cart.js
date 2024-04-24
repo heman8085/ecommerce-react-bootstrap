@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Table } from "react-bootstrap";
-//import CartData from "./CartData";
 import { EcomContext} from "../store/EcomContext";
 
 const Cart = () => {
