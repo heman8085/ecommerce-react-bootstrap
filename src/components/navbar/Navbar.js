@@ -14,11 +14,11 @@ const Heading = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/store">Store</Nav.Link> 
+            <Nav.Link as={Link} to="/store">Store</Nav.Link>
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
           </Nav>
-          <Button variant="warning" onClick={handleShow}>
+          <Button variant="warning" onClick={handleShow} className="ml-auto d-lg-inline-block">
             Cart <Badge bg="danger">{size}</Badge>
             <span className="visually-hidden">unread messages</span>
           </Button>
@@ -29,3 +29,4 @@ const Heading = () => {
 };
 
 export default Heading;
+

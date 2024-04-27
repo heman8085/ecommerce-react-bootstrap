@@ -9,6 +9,8 @@ import CartModal from "./components/modal/CartModal";
 import AboutUs from "./components/pages/AboutUs";
 import Home from "./components/pages/Home";
 import ContactUs from "./components/pages/ContactUs";
+import ProductDetail from "./components/pages/ProductDetail";
+import productsArr from "./components/card/Data";
 
 function App() {
   return (
@@ -17,9 +19,10 @@ function App() {
         <Heading />
         <Routes>
           <Route path="/store" element={<Card />} />
-          <Route path="/" element = {<Home/>}/>
-          <Route path="/about" element={<AboutUs/>} />
-          <Route path="/contact" element={<ContactUs/>} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/products/:productId" element={<ProductDetail products={productsArr}/>} />
         </Routes>
         <Footer />
         <CartModal />

@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
-import {Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import productsArr from "./Data";
-import { EcomContext} from "../store/EcomContext";
+import { EcomContext } from "../store/EcomContext";
+import { Link } from "react-router-dom";
 
 const ProductCard = () => {
   const { addToCartHandler } = useContext(EcomContext);
@@ -10,9 +11,14 @@ const ProductCard = () => {
     <Container style={{ marginTop: "30px", marginBottom: "60px" }}>
       <Row xs={1} md={2} lg={4} className="g-4 justify-content-center">
         {productsArr.map((item) => (
-          <Col>
-            <Card key={item.id} className="h-100">
-              <Card.Img variant="top" src={item.imageUrl} alt="data-img" />
+          <Col key={item.id}>
+            <Card  className="h-100">
+              <Link
+                to={`/products/${item.id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <Card.Img variant="top" src={item.imageUrl} alt="data-img" />
+              </Link>
               <Card.Body>
                 <Card.Title>{item.title}</Card.Title>
                 <Card.Text>Price - ${item.price}</Card.Text>
@@ -32,5 +38,3 @@ const ProductCard = () => {
 };
 
 export default ProductCard;
-
-
