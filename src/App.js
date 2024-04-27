@@ -8,6 +8,7 @@ import { EcomProvider } from "./components/store/EcomContext";
 import CartModal from "./components/modal/CartModal";
 import AboutUs from "./components/pages/AboutUs";
 import Home from "./components/pages/Home";
+import ContactUs from "./components/pages/ContactUs";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="/store" element={<Card />} />
           <Route path="/" element = {<Home/>}/>
-          <Route path="/about" element={<AboutUs />} />
+          <Route path="/about" element={<AboutUs/>} />
+          <Route path="/contact" element={<ContactUs/>} />
         </Routes>
         <Footer />
         <CartModal />
