@@ -2,12 +2,18 @@ import React, { createContext, useState } from "react";
 const EcomContext = createContext();
 
 const EcomProvider = ({ children }) => {
+  const initialToken = localStorage.getItem("token");
+  const [token, setToken] = useState(initialToken);
   const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+const loginHandler = (newToken) => {
+  setToken(newToken);
+  localStorage.setItem("token", token);
+};
 
   const addToCartHandler = (item) => {
     const isPresent = cart.some((product) => item.id === product.id);
@@ -47,6 +53,7 @@ const EcomProvider = ({ children }) => {
         cart,
         quantityChangeHandler,
         size,
+        loginHandler,
       }}
     >
       {children}

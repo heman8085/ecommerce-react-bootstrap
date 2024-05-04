@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button ,Container,Row,Col} from "react-bootstrap";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -35,49 +35,50 @@ const ContactUs = () => {
   };
 
   return (
-      <div className="container">
-          <br/>
-          <h2>Contact Us</h2>
-          <br/>
-      <Form onSubmit={handleSubmit}>
-        <Form.Group controlId="formName">
-          <Form.Label>Name :</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter your name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </Form.Group>
+    <Container className="mt-5">
+      <h2 className="text-center mb-4">Contact Us</h2>
+      <Row className="justify-content-md-center">
+        <Col xs={12} md={6}>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group controlId="formName" className="mb-3">
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Form.Group controlId="formEmail">
-          <Form.Label>Email address :</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-        </Form.Group>
+            <Form.Group controlId="formEmail" className="mb-3">
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </Form.Group>
 
-        <Form.Group controlId="formPhoneNumber">
-          <Form.Label>Phone Number :</Form.Label>
-          <Form.Control
-            type="tel"
-            placeholder="Enter phone number"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-          />
-        </Form.Group>
-         <br/>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </div>
+            <Form.Group controlId="formPhoneNumber" className="mb-3">
+              <Form.Control
+                type="tel"
+                placeholder="Enter phone number"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+              />
+            </Form.Group>
+
+            <div className="d-grid mt-3">
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </div>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

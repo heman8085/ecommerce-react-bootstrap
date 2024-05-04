@@ -9,7 +9,8 @@ import CartModal from "./components/modal/CartModal";
 import AboutUs from "./components/pages/AboutUs";
 import Home from "./components/pages/Home";
 import ContactUs from "./components/pages/ContactUs";
-import ProductDetail from "./components/pages/ProductDetail";
+import Login from "./components/pages/Login";
+import ProductDetail from "./components/pages/productDetail/ProductDetail";
 import productsArr from "./components/card/Data";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/products/:productId" element={<ProductDetail products={productsArr}/>} />
         </Routes>
         <Footer />
