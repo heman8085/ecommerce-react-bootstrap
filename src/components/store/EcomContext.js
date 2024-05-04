@@ -1,9 +1,15 @@
 import React, { createContext, useState } from "react";
+
+
 const EcomContext = createContext();
 
 const EcomProvider = ({ children }) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
+  
+  
+  const userIsLoggedIn = !!token;
+  
   const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
 
@@ -12,8 +18,12 @@ const EcomProvider = ({ children }) => {
 
 const loginHandler = (newToken) => {
   setToken(newToken);
-  localStorage.setItem("token", token);
-};
+  localStorage.setItem("token", newToken);
+  };
+  const logoutHandler = () => {
+    setToken(null);
+    localStorage.removeItem("token");
+  };
 
   const addToCartHandler = (item) => {
     const isPresent = cart.some((product) => item.id === product.id);
@@ -54,6 +64,8 @@ const loginHandler = (newToken) => {
         quantityChangeHandler,
         size,
         loginHandler,
+        logoutHandler,
+        userIsLoggedIn
       }}
     >
       {children}

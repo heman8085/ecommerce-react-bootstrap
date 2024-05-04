@@ -1,4 +1,3 @@
-
 import React, { useState, useContext } from "react";
 import {
   FloatingLabel,
@@ -12,6 +11,8 @@ import { EcomContext } from "../store/EcomContext";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+ const [isLogin, setIsLogin] = useState(true);
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,14 +20,26 @@ const Login = () => {
   const { loginHandler } = useContext(EcomContext);
   const navigate = useNavigate();
 
+  const switchModeHandler = () => {
+    setIsLogin((prevState) => !prevState);
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
 
+let url;
+if (isLogin) {
+  url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAKKGdUt1ko9J_bH7wRVmAd_NouIG_rbcw";
+} else {
+  url =
+    "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAKKGdUt1ko9J_bH7wRVmAd_NouIG_rbcw";
+}
+
     try {
-      const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAKKGdUt1ko9J_bH7wRVmAd_NouIG_rbcw",
+      const response = await fetch(url,
         {
           method: "POST",
           body: JSON.stringify({
@@ -48,8 +61,7 @@ const Login = () => {
       const data = await response.json();
       //console.log(data)
       loginHandler(data.idToken);
-      navigate('/store');
-
+      navigate("/store");
     } catch (error) {
       setError(error.message);
     } finally {
@@ -61,7 +73,7 @@ const Login = () => {
     <Container className="mt-5">
       <Row className="justify-content-md-center">
         <Col xs={12} md={6}>
-          <h2 className="text-center mb-4">Login</h2>
+          <h2 className="text-center mb-4">{isLogin ? "Login" : "Sign Up"}</h2>
           <Form onSubmit={submitHandler}>
             <FloatingLabel
               controlId="floatingInput"
@@ -84,8 +96,23 @@ const Login = () => {
               />
             </FloatingLabel>
             <div className="d-grid mt-3">
-              <Button variant="primary" type="submit" disabled={loading}>
-                {loading ? "Loading..." : "Login"}
+              {!loading && (
+                <Button
+                  variant={isLogin ? "primary" : "success"}
+                  type="submit"
+                  disabled={loading}
+                >
+                  {isLogin ? "Login" : "Create Account"}
+                </Button>
+              )}
+              {loading && <p>Loading...</p>}
+              <Button
+                variant={isLogin ? "warning" : "info"}
+                type="button"
+                onClick={switchModeHandler}
+                className="mt-2"
+              >
+                {isLogin ? "Create new account" : "Login with existing account"}
               </Button>
             </div>
             {error && <p className="text-danger mt-2">{error}</p>}
