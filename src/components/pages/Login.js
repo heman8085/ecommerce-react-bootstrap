@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
 
  const [isLogin, setIsLogin] = useState(true);
-  const [enteredEmail, setEnteredEmail] = useState("");
+ const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -62,6 +62,7 @@ if (isLogin) {
       //console.log(data)
       loginHandler(data.idToken);
       navigate("/store");
+
     } catch (error) {
       setError(error.message);
     } finally {

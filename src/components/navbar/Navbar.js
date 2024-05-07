@@ -14,7 +14,7 @@ const Heading = () => {
    };
 
   return (
-    <Navbar bg="dark" variant="dark" sticky="top">
+    <Navbar bg="dark" variant="dark" sticky="top" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">
           The Generics
@@ -40,10 +40,10 @@ const Heading = () => {
             <Nav.Link as={Link} to="/contact">
               Contact
             </Nav.Link>
-            
           </Nav>
           {userIsLoggedIn && <Button onClick={handleLogout}>Logout</Button>}
-          <Button
+        </Navbar.Collapse>
+        <Button
             variant="warning"
             onClick={handleShow}
             className="ml-auto d-lg-inline-block"
@@ -51,7 +51,6 @@ const Heading = () => {
             Cart <Badge bg="danger">{size}</Badge>
             <span className="visually-hidden">unread messages</span>
           </Button>
-        </Navbar.Collapse>
       </Container>
     </Navbar>
   );

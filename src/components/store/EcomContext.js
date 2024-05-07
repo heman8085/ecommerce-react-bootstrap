@@ -1,31 +1,29 @@
-import React, { createContext, useState } from "react";
-
+ import React, { createContext, useState} from "react";
 
 const EcomContext = createContext();
 
 const EcomProvider = ({ children }) => {
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
-  
-  
-  const userIsLoggedIn = !!token;
-  
   const [show, setShow] = useState(false);
   const [cart, setCart] = useState([]);
+
+  const userIsLoggedIn = !!token;
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-const loginHandler = (newToken) => {
-  setToken(newToken);
-  localStorage.setItem("token", newToken);
+  const loginHandler = (newToken) => {
+    setToken(newToken);
+    localStorage.setItem("token", newToken);
   };
+
   const logoutHandler = () => {
     setToken(null);
     localStorage.removeItem("token");
   };
 
-  const addToCartHandler = (item) => {
+  const addToCartHandler = async (item) => {
     const isPresent = cart.some((product) => item.id === product.id);
     if (isPresent) {
       const updatedCart = cart.map((product) =>
@@ -51,7 +49,9 @@ const loginHandler = (newToken) => {
       .filter((cartItem) => cartItem.quantity > 0);
     setCart(updatedCart);
   };
+
   const size = cart.length;
+
   return (
     <EcomContext.Provider
       value={{
@@ -65,7 +65,7 @@ const loginHandler = (newToken) => {
         size,
         loginHandler,
         logoutHandler,
-        userIsLoggedIn
+        userIsLoggedIn,
       }}
     >
       {children}
@@ -74,3 +74,34 @@ const loginHandler = (newToken) => {
 };
 
 export { EcomContext, EcomProvider };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

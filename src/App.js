@@ -18,8 +18,6 @@ function App() {
   
   const { userIsLoggedIn} = useContext(EcomContext);
   
- 
-
     return (
       <Router>
         <Heading />
