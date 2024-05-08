@@ -46,7 +46,6 @@ const EcomProvider = ({ children }) => {
       }
     }, [userIsLoggedIn]);
   
-
   const addToCartHandler = async (item) => {
     const isPresent = cart.some((product) => item.id === product.id);
     let updatedCart;
@@ -127,5 +126,6 @@ const EcomProvider = ({ children }) => {
 };
 
 export { EcomContext, EcomProvider };
+
 
 
